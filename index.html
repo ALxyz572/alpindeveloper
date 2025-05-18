@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alpin Developer - Website Portofolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    video.bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.2);
+      pointer-events: none;
+    }
+    .intro-box {
+      background: rgba(128, 128, 128, 0.2);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px #000;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+    .intro {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: rgba(128, 128, 128, 0.2);
+      text-align: center;
+    }
+    .intro::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(128, 128, 128, 0.2);
+      z-index: -1;
+}
+    .intro img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 3px solid #ccc;
+      box-shadow: 0 0 15px #fff, 0 0 20px #aaa, 0 0 25px #fff;
+      animation: blinkAvatar 2s infinite;
+    }
+    @keyframes blinkAvatar {
+      0%, 100% { box-shadow: 0 0 15px #fff, 0 0 20px #aaa, 0 0 25px #fff; }
+      50% { box-shadow: 0 0 5px #777, 0 0 10px #555, 0 0 15px #777; }
+    }
+    .intro .quote {
+      font-style: italic;
+      margin-top: 15px;
+      color: #ccc;
+    }
+    .intro button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 18px;
+      background: #888;
+      color: #000;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .box {
+      max-width: 700px;
+      margin: 25px auto;
+      background: rgba(128, 128, 128, 0.2);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .box-title {
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    .quote {
+      font-style: italic;
+      margin: 10px 0;
+    }
+    .skill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .skill i {
+      font-size: 24px;
+      width: 30px;
+    }
+    .bar {
+      flex: 1;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .fill {
+      height: 14px;
+      background: linear-gradient(90deg, #ccc, #aaa);
+      width: 0;
+      transition: width 1.2s ease;
+    }
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid #ccc;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px #fff, 0 0 20px #aaa, 0 0 25px #fff;
+      animation: blinkAvatar 2s infinite;
+    }
+    .btn-download {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.915);
+      color: #000;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .btn-download:hover {
+      background: rgba(255,255,255,0.915);
+    }
+    .social-icons {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .social-icons a {
+      font-size: 26px;
+      margin: 0 15px;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ccc;
+    }
+    .pay-item {
+      margin-bottom: 15px;
+      background: rgba(128, 128, 128, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pay-item span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pay-item button {
+      background: rgba(255,255,255,0.915);
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+    }
+  .music-board {
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: center;
+  }
+
+  .music-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(128, 128, 128, 0.2);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+
+  .music-item span {
+    display: flex;
+    align-items: center;
+    color: #eee;
+  }
+
+  .music-item button {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .music-item button:hover {
+    color: #fff;
+  }
+  </style>
+</head>
+<body>
+
+<video class="bg-video" autoplay muted loop playsinline preload="auto">
+  <source src="https://files.catbox.moe/r6sfkk.mp4" type="video/webm" />
+</video>
+  
+<div class="intro" id="intro">
+  <div class="intro-box">
+    <img src="https://files.catbox.moe/vq0cr1.jpg" alt="Avatar" />
+    <h1>Portofolio - Alpin Developer</h1>
+    <div class="quote">"Mulai dulu, karena menunggu hanya menunda impian."</div>
+    <button onclick="startSite()">MASUK</button>
+  </div>
+</div>
+
+  <div id="main-content" style="display:none;">
+    <section id="home" data-aos="fade-up">
+      <img src="https://files.catbox.moe/vq0cr1.jpg" alt="Avatar" class="avatar" />
+      <div class="box">
+        <div class="box-title">Tentang Saya</div>
+        <p>Nama saya alpiansyah, Saya adalah seorang pria yang lahir di kalimantan tengah dan di besarkan di kalimantan selatan, Saya salah satu santri di pondok pesantren darussalam martapura, Saya memiliki kecacatan akibat kecelakaan, Namun semenjak kecacatan itu tiba ntah kenapa saya pintar dalam hal ini, Mungkinkah ini makna dari setiap kekurangan pasti ada kelebihan, Oh iya kalian bisa memanggil ku alpin atau alpian, Untuk programmer yang hanya memiliki satu tangan seprti saya, tetap semangat yaa</p>
+      </div>
+    </section>
+
+    <section id="quotes">
+      <div class="box" data-aos="fade-up"><div class="quote">"Jangan tunggu motivasi, mulailah dulu."</div></div>
+      <div class="box" data-aos="fade-up"><div class="quote">"Belajar coding bukan soal bakat, tapi ketekunan."</div></div>
+      <div class="box" data-aos="fade-up"><div class="quote">"Kegagalan adalah bagian dari proses belajar."</div></div>
+      <div class="box" data-aos="fade-up"><div class="quote">"Developer hebat dulunya juga pemula."</div></div>
+      <div class="box" data-aos="fade-up"><div class="quote">"Kerjakan dengan cinta, hasil akan mengikuti."</div></div>
+    </section>
+
+    <section id="skills" data-aos="fade-up">
+      <div class="box">
+        <div class="box-title">Skill</div>
+        <div class="skill"><i class="fab fa-html5"></i>HTML & CSS <div class="bar"><div class="fill" style="width:95%"></div></div></div>
+        <div class="skill"><i class="fab fa-js"></i>JavaScript <div class="bar"><div class="fill" style="width:80%"></div></div></div>
+        <div class="skill"><i class="fab fa-python"></i>Python <div class="bar"><div class="fill" style="width:60%"></div></div></div>
+        <div class="skill"><i class="fab fa-node-js"></i>Node.js <div class="bar"><div class="fill" style="width:50%"></div></div></div>
+        <div class="skill"><i class="fab fa-php"></i>PHP <div class="bar"><div class="fill" style="width:45%"></div></div></div>
+        <div class="skill"><i class="fas fa-book-quran"></i>Fiqih <div class="bar"><div class="fill" style="width:95%"></div></div></div>
+        <div class="skill"><i class="fas fa-book-atlas"></i>Tarikh <div class="bar"><div class="fill" style="width:80%"></div></div></div>
+        <div class="skill"><i class="fas fa-font"></i>Sorof <div class="bar"><div class="fill" style="width:75%"></div></div></div>
+      </div>
+    </section>
+  </section>
+    <section id="payment" data-aos="fade-up">
+      <div class="box">
+        <div class="box-title">Informasi Pembayaran</div>
+        <div class="pay-item">
+          <span><i class="fa-solid fa-building-columns"></i> SEA BANK: <b id="seabank">901392068633</b></span>
+          <button onclick="copyText('seabank')">Salin</button>
+        </div>
+        <div class="pay-item">
+          <span><i class="fa-brands fa-digital-ocean"></i> DANA: <b id="dana">083120589335</b></span>
+          <button onclick="copyText('dana')">Salin</button>
+        </div>
+        <div class="pay-item">
+          <span><i class="fa-brands fa-osi"></i> OVO: <b id="ovo">087762544501</b></span>
+          <button onclick="copyText('ovo')">Salin</button>
+        </div>
+        <div class="pay-item">
+          <span><i class="fa-brands fa-google-pay"></i> GOPAY: <b id="gopay">087762544501</b></span>
+          <button onclick="copyText('gopay')">Salin</button>
+        </div>
+        <img src="https://files.catbox.moe/nlks1z.jpg" width="200" /><br>
+        <a href="https://files.catbox.moe/nlks1z.jpg" class="btn-download" download>Download disini bre</a>
+      </div>
+    </section>
+    
+  <section class="music-board" data-aos="fade-up">
+    <div class="box">
+    <h3>Playlist Favorit</h3>
+<div class="music-item">
+  <span><img src="https://files.catbox.moe/iuo6d2.jpg" style="width:24px; margin-right:10px;" /> Nadin Amizah - Bertaut</span>
+  <button onclick="playAudio('https://files.catbox.moe/rsppor.mp3', this)"><i class="fas fa-play"></i></button>
+</div>
+<div class="music-item">
+  <span><img src="https://files.catbox.moe/3ji48p.jpg" style="width:24px; margin-right:10px;" /> Feast - Kami Belum Tentu</span>
+  <button onclick="playAudio('https://files.catbox.moe/vww5o6.mp3', this)"><i class="fas fa-play"></i></button>
+</div>
+<div class="music-item">
+  <span><img src="https://files.catbox.moe/s5mu1m.jpg" style="width:24px; margin-right:10px;" /> Feast - Peradaban</span>
+  <button onclick="playAudio('https://files.catbox.moe/8nd7ex.mp3', this)"><i class="fas fa-play"></i></button>
+</div>
+<div class="music-item">
+  <span><img src="https://files.catbox.moe/ylha2j.jpg" style="width:24px; margin-right:10px;" /> Hindia - berdansalah Karir Ini Tidak Ada Gunanya</span>
+  <button onclick="playAudio('https://files.catbox.moe/9tt5vj.mp3', this)"><i class="fas fa-play"></i></button>
+    </div>
+  </section>
+    <section id="social" data-aos="fade-up">
+      <div class="box-title">Sosial Media</div>
+      <div class="social-icons">
+        <a href="https://instagram.com/alpian1_" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/alpinxyz" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://wa.me/6283120589335" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://github.com/ALxyz572" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+AOS.init({
+  duration: 1200,
+  once: true,
+  startEvent: 'DOMContentLoaded',
+  callback: function(el) {
+    if(el.id === 'skills') {
+      const fills = el.querySelectorAll('.fill');
+      fills.forEach(fill => {
+        fill.style.width = fill.getAttribute('data-width');
+      });
+    }
+  }
+});
+    function startSite() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => alert("Disalin: " + text));
+    }
+    
+  let currentAudio = null;
+  let currentButton = null;
+
+  function playAudio(url, button) {
+    if (currentAudio && !currentAudio.paused) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      if (currentButton) currentButton.innerHTML = '<i class="fas fa-play"></i>';
+    }
+
+    if (!currentAudio || currentAudio.src !== url) {
+      currentAudio = new Audio(url);
+      currentAudio.play();
+      currentButton = button;
+      button.innerHTML = '<i class="fas fa-pause"></i>';
+
+      currentAudio.onended = () => {
+        button.innerHTML = '<i class="fas fa-play"></i>';
+        currentAudio = null;
+        currentButton = null;
+      };
+    } else {
+      currentAudio = null;
+      currentButton = null;
+    }
+  }
+    
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.fill').forEach(bar => {
+        const box = bar.getBoundingClientRect();
+        if (box.top < window.innerHeight) {
+          bar.style.width = bar.getAttribute('style').split('width:')[1];
+        }
+      });
+    });
+  </script>
+</body>
+</html>
